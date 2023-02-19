@@ -1,0 +1,47 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.buttons {
+    display: flex;
+    gap: 30px;
+    margin: 20px;
+}
+
+.buttons > * {
+    size: 30px;
+    font-size: 25px;
+    padding: 10px 15px;
+    border-width: 1px;
+    border-color: black;
+    width: 180px;
+    transition: all 0.05s;
+}
+
+.buttons > *:hover {
+    filter: brightness(85%);
+    transform: scale(1.1);
+}
+
+.buttons > *:active {
+    transform: translateY(4px);
+}
+
+.rock {
+    background-color: gray;
+    color: white;
+}
+
+.paper {
+    background-color: white;
+    
+   
+}
+
+.scissors {
+    background-color: rgba(97, 113, 189, 0.716);
+    border-color: rgba(97, 113, 189, 0.716);
+}

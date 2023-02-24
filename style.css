@@ -5,6 +5,12 @@ body {
     flex-direction: column;
 }
 
+.gametext > * {
+    background-color: pink;
+    margin: 10px;
+    font-size: 25px;
+}
+
 .buttons {
     display: flex;
     gap: 30px;

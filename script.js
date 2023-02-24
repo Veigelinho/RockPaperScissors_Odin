@@ -1,36 +1,41 @@
 var RPS = ["rock", "paper", "scissors"];
 var playerScore = 0;
 var computerScore = 0;
+var playerSelection;
 
 function getComputerChoice () {
     let randomnum3 = Math.floor(Math.random()*3);
     return RPS[randomnum3];
     }
 
-var playerSelection;
+
     
-    const button = document.querySelectorAll("button");
+const button = document.querySelectorAll("button");
 
     button.forEach(function(button) {
-        button.addEventListener("click", e => {
+        button.addEventListener("click", () => {
         playerSelection = button.className;
-        // console.log(playerSelection)
         playRound();
         })
     })
     
+const body = document.body;
+const divGameTextGroup = document.createElement("div");
+divGameTextGroup.setAttribute("class", "gametext")
+
+body.append(divGameTextGroup)
+// const divGameTextGroup2 = document.divGameTextGroup
 
 
-let bool = true
+const divResult = document.createElement("div");
+const divComputerSelection = document.createElement("div");
+const divScore = document.createElement("div");
+const divWinner = document.createElement("div");
+console.log(document.querySelector("divResult"))
 
-const divResult = document.createElement("div")
-const divComputerSelection = document.createElement("div")
-const divScore = document.createElement("div")
-const divWinner = document.createElement('div');
-const divRestartButton = document.createElement('button');
-divRestartButton.innerText = "Try Again!";
 
 function playRound () {
+    
     if((playerScore < 5) && (computerScore < 5)) {    
         const computerSelection = getComputerChoice();
             divComputerSelection.innerText = `The computer chose ${computerSelection}!`;
@@ -54,35 +59,26 @@ function playRound () {
         }
     if ((playerScore == 5) || (computerScore == 5)) {
         (playerScore>computerScore) ? (divWinner.innerText = "Congrats! You've won the game!") : (divWinner.innerText = "You lost! More luck next time!");
-        document.body.append(divRestartButton)
+        body.append(divRestartButton)
     }
 }
 
-divRestartButton.addEventListener('click', () => {
+
+const divRestartButton = document.createElement('button');
+divRestartButton.innerText = "Try Again!";
+
+const restartGame = divRestartButton.addEventListener('click', () => {
     divRestartButton.remove();
-    
+    divComputerSelection.innerText = "";
+    divScore.innerText = "";
+    divWinner.innerText = "";
+    divResult.innerText = "";
+    playerScore = 0;
+    computerScore = 0;
 });
 
 
-document.body.append(divResult, divComputerSelection, divScore, divWinner)
-
-
-
-
-
-
-// playerScore = 0;
-// computerScore = 0;
-//     for (let i = 0; i<5; i++) {
-//         playRound();
-//         bool ? playerScore += 1 : computerScore += 1;
-//         score = playerScore + ":" + computerScore;
-//         console.log(score);
-//         console.log(computerScore);
-
-//     }
-// (playerScore>computerScore) ? console.log("Congrats! You've won the game!") : console.log("You lost! More luck next time!");
-
-
-
-// console.log(button);
+divGameTextGroup.appendChild(divResult);
+divGameTextGroup.appendChild(divComputerSelection);
+divGameTextGroup.appendChild(divScore);
+divGameTextGroup.appendChild(divWinner);
